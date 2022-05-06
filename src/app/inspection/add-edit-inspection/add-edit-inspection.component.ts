@@ -24,10 +24,58 @@ export class AddEditInspectionComponent implements OnInit {
     this.id=this.inspection.id;
     this.status=this.inspection.staus;
     this.comments=this.inspection.comments;
-    this.inspectionTypeId=this.inspection.iinspectionTypeIdd;
+    this.inspectionTypeId=this.inspection.inspectionTypeId;
     this.statusList$ = this.service.getStatus();
     this.inspectionList$ = this.service.getInspectionList();
     this.inspectionTypesList$ = this.service.getInspectionTypesList();
 
   }
+
+  addInspection(){
+    var inspection = {
+      status:this.status,
+      comments:this.comments,
+      inspectionTypeId:this.inspectionTypeId
+    }
+    this.service.addInspection(inspection).subscribe(res => {
+      var closeModalBtn = document.getElementById('add-edit-modal-close')
+      if(closeModalBtn){
+        closeModalBtn.click();
+      }
+      var showAddSuccess = document.getElementById('add-success-alert');
+      if(showAddSuccess){
+        showAddSuccess.style.display = "block";
+      }
+      setTimeout(function(){
+        if(showAddSuccess){
+          showAddSuccess.style.display = "none"
+        }
+      },4000);
+    })
+  }
+  updateInspection(){
+    var inspection = {
+      id:this.id,
+      status:this.status,
+      comments:this.comments,
+      inspectionTypeId:this.inspectionTypeId
+    }
+    var id:number = this.id;
+    this.service.updateInspection(id,inspection).subscribe(res => {
+      var closeModalBtn = document.getElementById('add-edit-modal-close')
+      if(closeModalBtn){
+        closeModalBtn.click();
+      }
+      var showUpdateSuccess = document.getElementById('add-success-alert');
+      if(showUpdateSuccess){
+        showUpdateSuccess.style.display = "block";
+      }
+      setTimeout(function(){
+        if(showUpdateSuccess){
+          showUpdateSuccess.style.display = "none"
+        }
+      },4000);
+    })
+  }
+
 }
