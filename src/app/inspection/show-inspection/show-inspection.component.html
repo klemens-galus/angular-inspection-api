@@ -4,6 +4,10 @@
     Add Inspection
   </button>
 
+  <button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="modalInspectionTypeAdd()">
+    Add Inspection Type
+  </button>
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-secondary float-end m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Show Inspection Types
@@ -54,6 +58,9 @@
 <div class="alert alert-success" role="alert" id="delete-success-alert">
     Inspection successfully removed ! 
 </div>
+<div class="alert alert-success" role="alert" id="add-inspectionType-success-alert">
+    Inspection Type successfully added ! 
+</div>
 
 
   
@@ -86,6 +93,7 @@
         </div>
         <div class="modal-body">
           <app-add-edit-inspection [inspection]="inspection" *ngIf="activateAddEditInspectionComponent"></app-add-edit-inspection>
+          <app-add-inspection-type [inspectionType]="inspectionType" *ngIf="activateAddTypeComponent"></app-add-inspection-type>
         </div>
       </div>
     </div>

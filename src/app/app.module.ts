@@ -9,13 +9,15 @@ import { ShowInspectionComponent } from './inspection/show-inspection/show-inspe
 import { AddEditInspectionComponent } from './inspection/add-edit-inspection/add-edit-inspection.component';
 
 import { InspectionApiService } from './inspection-api.service';
+import { AddInspectionTypeComponent } from './inspection/add-inspection-type/add-inspection-type.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InspectionComponent,
     ShowInspectionComponent,
-    AddEditInspectionComponent
+    AddEditInspectionComponent,
+    AddInspectionTypeComponent
   ],
   imports: [
     BrowserModule,

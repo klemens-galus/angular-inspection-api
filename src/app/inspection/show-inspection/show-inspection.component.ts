@@ -26,8 +26,9 @@ export class ShowInspectionComponent implements OnInit {
   // Variables (properties)
   modalTitle:string = '';
   activateAddEditInspectionComponent:boolean = false;
+  activateAddTypeComponent:boolean = false;
   inspection:any;
-
+  inspectionType:any;
   modalAdd(){
     this.inspection ={
       id:0,
@@ -37,6 +38,13 @@ export class ShowInspectionComponent implements OnInit {
     }
     this.modalTitle = "Add Inspection";
     this.activateAddEditInspectionComponent = true;
+  }
+  modalInspectionTypeAdd(){
+    this.inspectionType ={
+      inspectioName:null
+    }
+    this.modalTitle = "Add Inspection Type"
+    this.activateAddTypeComponent = true;
   }
   modalEdit(item:any){
     this.inspection = item;
@@ -65,7 +73,10 @@ export class ShowInspectionComponent implements OnInit {
   }
   modalClose(){
     this.activateAddEditInspectionComponent = false;
+    this.activateAddTypeComponent = false;
     this.inspectionList$ = this.service.getInspectionList();
+    this.inspectionTypesList$ = this.service.getInspectionTypesList();
+    this.refreshInspectionTypesMap();
   }
   refreshInspectionTypesMap(){
     this.service.getInspectionTypesList().subscribe(data => {
